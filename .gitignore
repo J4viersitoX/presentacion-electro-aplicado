@@ -63,4 +63,4 @@ $RECYCLE.BIN/
 
 # PDF compilado final
 # Descomenta la siguiente línea si prefieres NO subir los PDFs generados al repositorio:
-*.pdf
+# *.pdf
