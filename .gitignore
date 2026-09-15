@@ -1,0 +1,66 @@
+# Archivos auxiliares principales de compilación LaTeX
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+
+# Bibliografía y citas (BibTeX / Biber / BibLaTeX)
+*.bcf
+*.run.xml
+*-blx.bib
+
+# Índices, glosarios y nomenclaturas
+*.glo
+*.gls
+*.glg
+*.idx
+*.ind
+*.ilg
+*.ist
+*.nlo
+*.nls
+*.nlg
+
+# Presentaciones Beamer
+*.nav
+*.snm
+*.vrb
+
+# Paquetes específicos (minted, tikz, todonotes, microtype)
+_minted*
+*.pyg
+*.figlist
+*.makefile
+*.tdo
+*.mw
+
+# Archivos temporales de MiKTeX y motores TeX
+*.upa
+*.upb
+*.dvi
+*.xdv
+
+# Editores de LaTeX en Windows (TeXstudio, VS Code, TeXmaker)
+*.bak
+*.dat
+*.orig
+.vscode/
+*.cwl
+
+# Basura del sistema operativo Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# PDF compilado final
+# Descomenta la siguiente línea si prefieres NO subir los PDFs generados al repositorio:
+*.pdf
