@@ -310,10 +310,10 @@
                 \item Región de saturación
             \end{itemize}
         \end{column}
-        \begin{column}{0.75\textwidth}
+        \begin{column}{0.6\textwidth}
             \begin{figure}
                 \centering
-                \includegraphics[width=0.7\linewidth]{figures/regiones de operacion bjt.png}
+                \includegraphics[width=0.8\linewidth]{figures/regiones de operacion bjt.png}
                 \caption{Regiones operativas BJT}
             \end{figure}
         \end{column}
@@ -436,10 +436,68 @@
     \end{table}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Polarización en DC}
+    \begin{columns}
+        \begin{column}{0.4\textwidth}
+            \begin{itemize}
+                \item ¿Cómo mantener el transistor en la región activa?
+                \item Recta de carga y punto Q
+                \item ¿Cual sería un buen diseño de polarización?
+                \item Ejemplo: Polarización por divisor de voltaje
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.8\linewidth]{figures/regiones de operacion bjt.png}
+                \caption{Recta de carga y punto Q}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
 \section{Transistor de efecto de campo (FET)}
 
 \begin{frame}
     \frametitle{Transistor de efecto de campo (FET)}
+    \begin{columns}
+        \begin{column}{0.4\textwidth}
+            \begin{itemize}
+                \item FET vs BJT
+                \item Voltaje vs Corriente
+                \item Unipolar vs bipolar
+                \item Impedancia de entrada
+                \item Puerta, drenador y fuente
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.8\linewidth]{figures/mosfet-cross-section.jpg}
+                \caption{Diagrama de sección transversal de un FET}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Tipos de FET}
+    \begin{columns}
+        \begin{column}{0.4\textwidth}
+            \begin{itemize}
+                \item Canal N y P
+                \item JFET y MOSFET
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.8\linewidth]{figures/JFET-vs-MOSFET.png}
+                \caption{JFET y MOSFET}
+            \end{figure}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 \section{Aplicaciones}
@@ -555,15 +613,6 @@
   \end{columns}  
 \end{frame}
 
-
-\begin{frame}
-  \frametitle{Python example figure}
-  \begin{figure}
-    \centering
-    \includegraphics{planck.pdf}
-    \caption{This is the Planck spectrum $B_\nu$. Notice that text matches the same one used in the presentation. You need to compile the figure within the \texttt{plot\_scripts/planck.py} directory. As a general rule, \textbf{always} include units in your plots.}
-  \end{figure}
-\end{frame}
 \begin{frame}
   \frametitle{Ti\textit{k}z example figure}
   \vspace{-.1cm}
