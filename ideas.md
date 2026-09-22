@@ -17,3 +17,4 @@
 2. diferencias entre distintas aplicaciones
 3. limitaciones
 4. metodos de fabricacion y estado del arte (ultimos avances en el tema) (???)
+Preguntas
