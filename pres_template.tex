@@ -500,7 +500,114 @@
     \end{columns}
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{JFET}
+    \begin{columns}
+        \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item Voltage de estrangulamiento ($V_p$)
+                \item Región de resistencia ómica o controlada por voltage,
+                      \[ r_d = \frac{r_o}{(1 - V_{GS} / V_P)^2} \]
+                      donde $r_0$ es la resistencia con $V_{GS}=0\text{ V}$.
+            \end{itemize}
+
+            \vspace{0.3cm}
+
+            \centering
+            \small
+            \setlength{\tabcolsep}{2pt}
+            \renewcommand{\arraystretch}{1.1}
+            \begin{tabular}{c c c}
+                \textbf{\textit{JFET}} & & \textbf{\textit{BJT}} \\
+                $I_D = I_{DSS} (1 - V_{GS}/V_P)^2$ & $\Leftrightarrow$ & $I_C = \beta I_B$ \\
+                $I_D = I_S$ & $\Leftrightarrow$ & $I_C \cong I_E$ \\
+                $I_G \cong 0\text{ A}$ & $\Leftrightarrow$ & $V_{BE} \cong 0.7\text{ V}$
+            \end{tabular}
+        \end{column}
+        \begin{column}{0.55\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=1\linewidth]{figures/parteJFET.png}
+                \caption{Diagrama de sección transversal de un FET de tipo n y un gráfico $I_{D}$ vs $V_{DS}$.}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{MOSFET (de enriquecimiento)}
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item Puerta, drenador, fuente y sustrato
+                \item Voltaje de umbral $V_{GS} > V_T$
+                \item Región de enriquecimiento y de empobrecimiento
+                \item $I_D = k(V_{GS} - V_T)^2$, donde:
+                \[
+                    k = \frac{I_{D(\text{on})}}{\left(V_{GS(\text{on})} - V_T\right)^2}
+                \]
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.52\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=1\linewidth]{figures/MOSFETp.png}
+                \caption{Diagrama de sección transversal de un MOSFET de enriquecimiento en canal p y un gráfico $I_{D}$ vs $V_{DS}$.}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
 \section{Aplicaciones}
+\begin{frame}
+    \frametitle{Aplicaciones de los transistores}
+    \begin{columns}
+        \begin{column}{0.4\textwidth}
+            \begin{itemize}
+                \item John Bardeen, William Shockley y Walter Brattain en Bell Labs en 1947 crean el primer transistor.
+                \item Ley de Moore
+               \item BJT $\rightarrow$ amplificación e interruptor
+               \item MOSFET $\rightarrow$ memoria, microcontroladores, procesadores o electrónica de potencia.
+               \item IGBT $\rightarrow$ inversores,conversión de potencia, energía solar o vehículos eléctricos.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+           \begin{figure}
+                \centering
+                \includegraphics[width=0.7\linewidth]{figures/Bardeen_Shockley_Brattain_1948.JPG}
+                \caption{John Bardeen, William Shockley y Walter Brattain en Bell Labs en 1948.}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\section{Estado actual}
+
+\begin{frame}
+    \frametitle{Estado actual}
+    \begin{columns}
+        \begin{column}{0.4\textwidth}
+            \begin{itemize}
+                \item  TFET
+                \item JLT
+               \item Transistor de difusión
+               \item Transistor neuromórfico de puerta iónica
+               \item GaN HEMT (transistor de alta movilidad electrónica de nitruro de galio)
+                \item  OECT
+     
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.8\linewidth]{figures/OECTs.png}
+                \caption{Configuración del circuito utilizada para la medición de EEG mediante un OECT, junto con el registro de la actividad cerebral espontánea (arriba) que muestra el ritmo alfa captado por el transistor y el espectrograma tiempo-frecuencia asociado (abajo), obtenido mediante el análisis de Fourier de una grabación de 3 minutos.}
+            \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
 
 \section{Referencias}
 
