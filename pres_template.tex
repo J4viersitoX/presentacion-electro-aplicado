@@ -2,7 +2,6 @@
     10pt,
     aspectratio=169,
     xcolor={dvipsnames},
-    spanish,
     % handout,
     % notes=only,
     % notes,
@@ -19,7 +18,7 @@
 \useoutertheme{infolines}
 
 % PACKAGES
-\usepackage[spanish]{babel}  % uncomment for Spanish support
+\usepackage[english]{babel}
 \usepackage{tikz,pgfplots}
 \pgfplotsset{compat=1.13}
 \usetikzlibrary{calc}
@@ -28,8 +27,7 @@
 \graphicspath{{figures}}
 \usepackage{booktabs}
 \usepackage{upgreek}
-\usepackage{commath}
-\usepackage{amsmath,amsthm,amssymb,mathtools,mathrsfs}
+\usepackage{amsmath,amsthm,amssymb,mathtools}
 \usepackage{cancel}
 \usepackage{fontawesome5}
 \usepackage{enumerate}
@@ -48,6 +46,9 @@
         boxrule=.5pt
         }
 }
+
+\newcommand{\dif}{\mathrm{d}}
+\newcommand{\del}[1]{\left|#1\right|}
 
 % REFERENCES AND OTHERS
 \usepackage{aas_macros}
