@@ -101,7 +101,7 @@
       \begin{figure}
         \centering
         \includegraphics[width=0.7\textwidth]{figures/transistor-packages.jpg}
-        \caption{Transistores en distintos empaquetados}
+        \caption{Transistores en distintos empaquetados \citep{wiki:transistor_packaging}}
       \end{figure}
     \end{column}
   \end{columns}  
@@ -120,10 +120,39 @@
             \end{itemize}  
         \end{column}
         \begin{column}{0.5\textwidth}
-            \begin{figure}
+            \begin{figure}[htbp]
                 \centering
-                \includegraphics[width=0.8\textwidth]{figures/BJT-vs-FET.png}
-                \caption{Simbología transistores, BJT (izquierda), MOSFET (derecha)}
+                \begin{minipage}[t]{0.45\textwidth}
+                    \centering
+                    \textbf{Transistor BJT (NPN)}
+                    \par\vspace{15pt}
+                    \begin{circuitikz}[scale=1, transform shape]
+                        % Dibuja un transistor NPN
+                        \draw (0,0) node[npn] (bjt) {};
+                        % Etiquetas de los terminales
+                        \node[left] at (bjt.B) {B};
+                        \node[above] at (bjt.C) {C};
+                        \node[below] at (bjt.E) {E};
+                    \end{circuitikz}
+                \end{minipage}
+                \hfill
+                \begin{minipage}[t]{0.45\textwidth}
+                    \centering
+                    \textbf{Transistor MOSFET (N-MOS)}
+                    \par\vspace{15pt}
+                    \begin{circuitikz}[scale=1, transform shape]
+                        % Dibuja un MOSFET canal N
+                        \draw (0,0) node[nmos] (mosfet) {};
+                        % Etiquetas de los terminales
+                        \node[left] at (mosfet.G) {G};
+                        \node[above] at (mosfet.D) {D};
+                        \node[below] at (mosfet.S) {S};
+                    \end{circuitikz}
+                \end{minipage}
+                
+                \vspace{15pt}
+                \caption{Diagramas esquemáticos de un transistor BJT (NPN) y un MOSFET (N-MOS). (Elaboración propia)}
+                \label{fig:transistores}
             \end{figure}
         \end{column}
     \end{columns}
@@ -139,14 +168,14 @@
             \begin{figure}
                 \centering
                 \includegraphics[width=0.7\linewidth]{figures/Bardeen_Shockley_Brattain_1948.JPG}
-                \caption{John Bardeen, William Shockley y Walter Brattain en Bell Labs en 1948}
+                \caption{Inventores del transistor: John Bardeen, William Shockley y Walter Brattain en Bell Labs en 1948. \citep{wiki:inventores_transistor_1948}}
             \end{figure}
         \end{column}
         \begin{column}{0.5\textwidth}
             \begin{figure}
                 \centering
-                \includegraphics[width=0.7\linewidth]{figures/Tubo_de_vacio.jpg}
-                \caption{Tubo de Vacío}
+                \includegraphics[width=0.7\linewidth]{figures/Triode_tube_1906.jpg}
+                \caption{El primer triodo de vacío, un tipo de tubo de vacío usado para amplificación. \citep{wiki:triodo_1906}}
             \end{figure}
         \end{column}
     \end{columns}
@@ -156,25 +185,11 @@
 
 \begin{frame}
     \frametitle{Semiconductores}
-    \begin{columns}
-        \begin{column}{0.35\textwidth}
-            \begin{itemize}
-                \item Materiales intrínsecos
-            \end{itemize}
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.7\linewidth]{figures/silicon.png}
-                \caption{Átomos de silicio formando una estructura cristalina}
-            \end{figure}
-        \end{column}
-        \begin{column}{0.65\textwidth}
-            \begin{figure}
-                \centering
-                \includegraphics[width=1\linewidth]{figures/bandas de conduccion y valencia.png}
-                \caption{Bandas de conducción y valencia para distintos materiales}
-            \end{figure}
-        \end{column}
-    \end{columns}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\linewidth]{figures/bandas de conduccion y valencia.png}
+        \caption{Bandas de conducción y valencia para distintos materiales \citep{boylestad2012}}
+    \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -191,15 +206,15 @@
         \begin{column}{0.5\textwidth}
             \begin{figure}
                 \centering
-                \includegraphics[width=0.9\linewidth]{figures/silicon doping.png}
-                \caption{Doping de silicio utilizando estroncio (tipo n) y boro (tipo p)}
+                \includegraphics[width=0.7\linewidth]{figures/antimony-impurity-n-type.png}
+                \caption{Doping de silicio utilizando antimonio para crear un material tipo n \citep{boylestad2012}}
             \end{figure}
         \end{column}
     \end{columns}
 \end{frame}
 
 \begin{frame}
-    \frametitle{¿Qué ocurre al unir n y p?}
+    \frametitle{¿Qué ocurre al unir p y n?}
     \begin{columns}
         \begin{column}{0.4\textwidth}
             \begin{itemize}
@@ -211,33 +226,45 @@
         \begin{column}{0.6\textwidth}
             \begin{figure}
                 \centering
-                \includegraphics[width=0.65\linewidth]{figures/Pn-junction-equilibrium-graphs.png}
-                \caption{Equilibrio de la unión n-p}
+                \includegraphics[width=0.62\linewidth]{figures/Pn-junction-equilibrium-graphs.png}
+                \caption{Equilibrio termodinámico de la unión p-n \citep{wiki:pn_junction_equilibrium}}
             \end{figure}
         \end{column}
     \end{columns}
 \end{frame}
 
 \begin{frame}
-    \frametitle{¿Qué ocurre al unir n y p?}
+    \frametitle{¿Qué ocurre al unir p y n?}
     \begin{itemize}
         \item ¿Qué ocurre al aplicar voltaje?
     \end{itemize}
     \begin{figure}
-        \centering
-        \includegraphics[width=0.6\linewidth]{figures/04-forward-bias-reverse-bias-en.png}
-        \caption{Efectos de aplicar voltaje sobre la unión n-p}
+        \begin{columns}
+            \begin{column}{0.5\textwidth}
+                \centering
+                \includegraphics[width=0.85\linewidth]{figures/forward-bias-pn.png}
+                
+                (a)
+            \end{column}
+            \begin{column}{0.5\textwidth}
+                \centering
+                \includegraphics[width=0.72\linewidth]{figures/reverse-bias-pn.png}
+                
+                (b)
+            \end{column}
+        \end{columns}
+        \caption{(a) Unión p-n en polarización directa, y (b) Unión p-n en polarización inversa \citep{boylestad2012}.}
     \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{¿Qué ocurre al unir n y p?}
+    \frametitle{¿Qué ocurre al unir p y n?}
     \begin{columns}
         \begin{column}{0.5\textwidth}
             \begin{figure}
                 \centering
                 \includegraphics[width=0.8\linewidth]{figures/diode-characteristics.png}
-                \caption{Curva característica de un diodo}
+                \caption{Curva característica de un diodo \citep{boylestad2012}}
             \end{figure}
         \end{column}
         \begin{column}{0.5\textwidth}
@@ -802,6 +829,7 @@
 \begin{frame}
     \frametitle{References}
     \footnotesize
+    \nocite{wiki:transistor_packaging}
     \bibliographystyle{bibstyle_aas}
     \bibliography{pres_template}
 \end{frame}
