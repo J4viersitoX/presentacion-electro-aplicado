@@ -548,8 +548,8 @@
         \begin{column}{0.6\textwidth}
             \begin{figure}
                 \centering
-                \includegraphics[width=0.8\linewidth]{figures/mosfet-cross-section.jpg}
-                \caption{Diagrama de sección transversal de un FET}
+                \includegraphics[width=0.6\linewidth]{figures/n-channel-enhancement-type-mosfet.png}
+                \caption{Diagrama de sección transversal de un MOSFET de enriquecimiento en canal n \citep{boylestad2012}.}
             \end{figure}
         \end{column}
     \end{columns}
@@ -567,8 +567,32 @@
         \begin{column}{0.6\textwidth}
             \begin{figure}
                 \centering
-                \includegraphics[width=0.8\linewidth]{figures/JFET-vs-MOSFET.png}
-                \caption{JFET y MOSFET}
+                \begin{minipage}{3.5cm}
+                    \centering
+                    \begin{circuitikz}[scale=1.2, transform shape]
+                        \ctikzset{transistors/fill=black!5, tr circle=true}
+                        % Dibuja un MOSFET canal N
+                        \draw (0,0) node[njfet] (jfet) {};
+                        % Etiquetas de los terminales
+                        \node[anchor=west, xshift=-0.7cm] at (mosfet.G) {G};
+                        \node[above] at (mosfet.D) {D};
+                        \node[below] at (mosfet.S) {S};
+                    \end{circuitikz}
+                \end{minipage}%
+                % --- Segundo Minipage: MOSFET ---
+                \begin{minipage}{3.5cm}
+                    \centering
+                    \begin{circuitikz}[scale=1.2, transform shape]
+                        \ctikzset{transistors/fill=black!5, tr circle=true}
+                        % Dibuja un MOSFET canal N
+                        \draw (0,0) node[nigfete] (mosfet) {};
+                        % Etiquetas de los terminales
+                        \node[left] at (mosfet.G) {G};
+                        \node[above] at (mosfet.D) {D};
+                        \node[below] at (mosfet.S) {S};
+                    \end{circuitikz}
+                \end{minipage}
+                \caption{JFET de canal N y MOSFET de enriquecimiento de canal N. (Elaboración propia)}
             \end{figure}
         \end{column}
     \end{columns}
@@ -603,7 +627,7 @@
             \begin{figure}
                 \centering
                 \includegraphics[width=1\linewidth]{figures/parteJFET.png}
-                \caption{Diagrama de sección transversal de un FET de tipo n y un gráfico $I_{D}$ vs $V_{DS}$.}
+                \caption{Diagrama de sección transversal de un FET de tipo n y un gráfico $I_{D}$ vs $V_{DS}$ \citep{boylestad2012}.}
             \end{figure}
         \end{column}
     \end{columns}
@@ -627,7 +651,7 @@
             \begin{figure}
                 \centering
                 \includegraphics[width=1\linewidth]{figures/MOSFETp.png}
-                \caption{Diagrama de sección transversal de un MOSFET de enriquecimiento en canal p y un gráfico $I_{D}$ vs $V_{DS}$.}
+                \caption{Diagrama de sección transversal de un MOSFET de enriquecimiento en canal p y un gráfico $I_{D}$ vs $V_{DS}$ \citep{boylestad2012}.}
             \end{figure}
         \end{column}
     \end{columns}
