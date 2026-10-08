@@ -127,6 +127,8 @@
                     \textbf{Transistor BJT (NPN)}
                     \par\vspace{15pt}
                     \begin{circuitikz}[scale=1, transform shape]
+                        % Configuración global para los transistores (círculo y relleno gris claro)
+                        \ctikzset{transistors/fill=black!5, tr circle=true}
                         % Dibuja un transistor NPN
                         \draw (0,0) node[npn] (bjt) {};
                         % Etiquetas de los terminales
@@ -141,6 +143,7 @@
                     \textbf{Transistor MOSFET (N-MOS)}
                     \par\vspace{15pt}
                     \begin{circuitikz}[scale=1, transform shape]
+                        \ctikzset{transistors/fill=black!5, tr circle=true}
                         % Dibuja un MOSFET canal N
                         \draw (0,0) node[nmos] (mosfet) {};
                         % Etiquetas de los terminales
@@ -299,7 +302,7 @@
             \begin{figure}
                 \centering
                 \includegraphics[width=0.9\linewidth]{figures/bjt npn vs pnp.jpg}
-                \caption{Transistores PNP y NPN}
+                \caption{Transistores PNP y NPN \citep{web:topdiode_npn_pnp}}
             \end{figure}
         \end{column}
     \end{columns}
@@ -332,9 +335,7 @@
             \begin{itemize}
                 \item Polarización de las uniones
                 \item Región activa directa
-                \begin{itemize}
-                    \item Región activa inversa
-                \end{itemize}
+                \item Región activa inversa
                 \item Región de corte
                 \item Región de saturación
             \end{itemize}
@@ -342,8 +343,8 @@
         \begin{column}{0.6\textwidth}
             \begin{figure}
                 \centering
-                \includegraphics[width=0.8\linewidth]{figures/regiones de operacion bjt.png}
-                \caption{Regiones operativas BJT}
+                \includegraphics[width=0.8\linewidth]{figures/common-emitter-collector-characteristics.png}
+                \caption{Regiones operativas BJT de emisor común \citep{boylestad2012}}
             \end{figure}
         \end{column}
     \end{columns}
@@ -355,16 +356,16 @@
         \centering
         \begin{tabular}{ccccc}
             \toprule
-            \textbf{Junction type} & \textbf{Applied voltages} & \multicolumn{2}{c}{\textbf{Junction bias}} & \textbf{Mode} \\
+            \textbf{Tipo de unión} & \textbf{Voltaje aplicado} & \multicolumn{2}{c}{\textbf{Polarización}} & \textbf{Región} \\
             & & \textbf{B--E} & \textbf{B--C} & \\ \midrule
-            NPN & $E < B < C$ & Forward & Reverse & Forward-active \\
-            NPN & $E < B > C$ & Forward & Forward & Saturation \\
-            NPN & $E > B < C$ & Reverse & Reverse & Cut-off \\
-            NPN & $E > B > C$ & Reverse & Forward & Reverse-active \\ \midrule
-            PNP & $E < B < C$ & Reverse & Forward & Reverse-active \\
-            PNP & $E < B > C$ & Reverse & Reverse & Cut-off \\
-            PNP & $E > B < C$ & Forward & Forward & Saturation \\
-            PNP & $E > B > C$ & Forward & Reverse & Forward-active \\
+            NPN & $E < B < C$ & Directa & Inversa & Activa Directa \\
+            NPN & $E < B > C$ & Directa & Directa & Saturación \\
+            NPN & $E > B < C$ & Inversa & Inversa & Corte \\
+            NPN & $E > B > C$ & Inversa & Directa & Activa Inversa \\ \midrule
+            PNP & $E < B < C$ & Inversa & Directa & Activa Inversa \\
+            PNP & $E < B > C$ & Inversa & Inversa & Corte \\
+            PNP & $E > B < C$ & Directa & Directa & Saturación \\
+            PNP & $E > B > C$ & Directa & Inversa & Activa Directa \\
             \bottomrule
         \end{tabular}
         \caption{Tabla de Regiones Operativas}
@@ -376,74 +377,64 @@
     \begin{itemize}
         \item Terminal común a la entrada y salida
     \end{itemize}
-    \begin{figure}
+    \begin{figure}[htbp]
         \centering
-        \includegraphics[width=0.8\linewidth]{figures/bjt topology.png}
-        \caption{Configuraciones topológicas del BJT}
+        \begin{circuitikz}[scale=1.1, font=\sffamily]
+            \ctikzset{transistors/fill=black!5, tr circle=true}
+            % --- Common Base ---
+            \begin{scope}[shift={(0,0)}]
+                % Transistor PNP rotado para que la base quede hacia abajo
+                \node[pnp, rotate=90] (T1) at (0,0) {};
+                \node[below right, xshift=2pt, yshift=2pt] at (T1.B) {B};
+
+                % Conexiones de Entrada/Salida
+                \draw (T1.E) -- (-1.5, 0) node[circ] {} node[above] {E};
+                \draw (T1.C) -- (1.5, 0) node[circ] {} node[above] {C} node[below] {out};
+
+                % Línea común (Inferior)
+                \draw (-1.5, -1.2) node[circ] {} -- (1.5, -1.2) node[circ] {};
+                \draw (T1.B) -- (T1.B |- 0,-1.2);
+
+                % Etiqueta
+                \node[align=center, below] at (0,-1.8) {Base\\Común};
+            \end{scope}
+
+            % --- Common Emitter ---
+            \begin{scope}[shift={(4.5,0)}]
+                \node[npn] (T2) at (0,0) {};
+
+                % Conexiones de Entrada/Salida
+                \draw (T2.B) -- (-1.5, 0) node[circ] {} node[above] {B};
+                \draw (T2.C) |- (1.5, 0.8) node[circ] {} node[below left] {C} node[above] {out};
+
+                % Línea común (Inferior)
+                \draw (-1.5, -1.2) node[circ] {} -- (1.5, -1.2) node[circ] {} node[above left] {E};
+                \draw (T2.E) -- (T2.E |- 0,-1.2);
+
+                % Etiqueta
+                \node[align=center, below] at (0,-1.8) {Emisor\\Común};
+            \end{scope}
+
+            % --- Common Collector ---
+            \begin{scope}[shift={(9,0)}]
+                \node[npn] (T3) at (0,0) {};
+
+                % Conexiones de Entrada/Salida
+                \draw (T3.B) -- (-1.5, 0) node[circ] {} node[above] {B};
+                \draw (T3.E) |- (1.5, -0.8) node[circ] {} node[above left] {E} node[below] {out};
+
+                % Línea común (Superior)
+                \draw (-1.5, 0.8) node[circ] {} -- (1.5, 0.8) node[circ] {} node[below left] {C};
+                \draw (T3.C) -- (T3.C |- 0,0.8);
+
+                % Etiqueta
+                \node[align=center, below] at (0,-1.8) {Colector\\Común};
+            \end{scope}
+        \end{circuitikz}
+        \vspace{10pt}
+        \caption{Configuraciones topológicas. (Elaboración propia)}
+        \label{fig:configurations}
     \end{figure}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Emisor común}
-    \begin{columns}
-        \begin{column}{0.4\textwidth}
-            \begin{itemize}
-                \item \textbf{Ganancia de voltaje ($A_v$):} Alta.
-                \item \textbf{Ganancia de corriente ($A_i$):} Alta ($\beta$).
-                \item \textbf{Impedancias:} Entrada moderada (unos cuantos k$\Omega$), salida moderada-alta.
-                \item \textbf{Fase:} Invierete la señal $180^\circ$.
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.6\textwidth}
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.8\linewidth]{figures/transistor-configurationse.jpg}
-                \caption{Configuración de emisor común}
-            \end{figure}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Colector común}
-    \begin{columns}
-        \begin{column}{0.4\textwidth}
-            \begin{itemize}
-                \item \textbf{Ganancia de voltaje ($A_v$):} $\approx 1$, nunca mayor a $1$.
-                \item \textbf{Ganancia de corriente ($A_i$):} Alta.
-                \item \textbf{Impedancias:} Entrada muy alta, salida muy baja.
-                \item \textbf{Fase:} En fase ($0^\circ$).
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.6\textwidth}
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.8\linewidth]{figures/transistor-configurationsc.jpg}
-                \caption{Configuración de colector común}
-            \end{figure}
-        \end{column}
-    \end{columns}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Base común}
-    \begin{columns}
-        \begin{column}{0.4\textwidth}
-            \begin{itemize}
-                \item \textbf{Ganancia de voltaje ($A_v$):} Alta.
-                \item \textbf{Ganancia de corriente ($A_i$):} $\approx 1$ ($\alpha$).
-                \item \textbf{Impedancias:} Entrada muy baja, salida alta.
-                \item \textbf{Fase:} En fase ($0^\circ$).
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.6\textwidth}
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.8\linewidth]{figures/transistor-configurationsb.jpg}
-                \caption{Configuración de base común}
-            \end{figure}
-        \end{column}
-    \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -473,17 +464,71 @@
                 \item ¿Cómo mantener el transistor en la región activa?
                 \item Recta de carga y punto Q
                 \item ¿Cual sería un buen diseño de polarización?
-                \item Ejemplo: Polarización por divisor de voltaje
+                \item Ejemplo: Polarización fija
             \end{itemize}
         \end{column}
         \begin{column}{0.6\textwidth}
             \begin{figure}
                 \centering
-                \includegraphics[width=0.8\linewidth]{figures/regiones de operacion bjt.png}
-                \caption{Recta de carga y punto Q}
+                \includegraphics[width=0.8\linewidth]{figures/fixed-bias-load-line.png}
+                \caption{Recta de carga y punto Q para polarización fija \citep{boylestad2012}}
             \end{figure}
         \end{column}
     \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Ejemplo: Polarización fija}
+    \begin{columns}
+        \begin{column}{0.3\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.8\linewidth]{figures/fixed-bias-circuit.png}
+                \caption{Circuito de polarización fija \citep{boylestad2012}}
+            \end{figure}
+        \end{column}
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item Usando Ohm y LCK se obtiene la siguiente ecuación:
+                \begin{equation*}
+                    V_{CE} = V_{CC} - I_C R_C
+                \end{equation*}
+                \item La recta de carga se obtiene al despejar $I_C$:
+                \begin{equation*}
+                    I_C = \frac{V_{CC} - V_{CE}}{R_C}
+                \end{equation*}
+                \item El punto Q se puede determinar usando la ecuación de la recta de carga y la ecuación del transistor
+                \item Además, puede moverse modificando $I_B$, $R_C$ o $V_{CC}$.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Ejemplo: Polarización fija}
+    \begin{figure}
+        \begin{columns}
+            \begin{column}{0.33\textwidth}
+                \centering
+                \includegraphics[width=1\linewidth]{figures/q-point-movement-1.png}
+
+                (a)
+            \end{column}
+            \begin{column}{0.33\textwidth}
+                \centering
+                \includegraphics[width=1\linewidth]{figures/q-point-movement-2.png}
+
+                (b)
+            \end{column}
+            \begin{column}{0.33\textwidth}
+                \centering
+                \includegraphics[width=1\linewidth]{figures/q-point-movement-3.png}
+
+                (c)
+            \end{column}
+        \end{columns}
+        \caption{(a) Punto Q desplazado por un cambio de $I_B$, (b) Recta de carga y punto Q desplazados por un cambio de $R_C$, (c) Punto Q desplazado por un cambio de $V_{CC}$ \citep{boylestad2012}.}
+    \end{figure}
 \end{frame}
 
 \section{Transistor de efecto de campo (FET)}
